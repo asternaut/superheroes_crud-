@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import {Link} from 'react-router';
 
 const HeroList = (props) => {
   return(
@@ -15,10 +16,11 @@ const HeroList = (props) => {
 const HeroCard = props =>
   <div className = "hero-card">
     <img src={props.img} />
-    <p> {props.name} </p>
+    <h3> {props.name} </h3>
     <p> {props.superpower} </p>
     <p> {props.universe} </p>
     <p> {props.evil} </p>
+    <Link to={`/heroes/edit/${props._id}`}>Edit</Link>
   </div>
 
-export default HeroList
+export default HeroList;

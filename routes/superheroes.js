@@ -14,7 +14,24 @@ Router.route('/') // where's the URL? see server.js -> app.use('/api/superheroes
       res.json({message: "found your heros", data});
     }
   });
-}) // chained together here! // R
+})
+.post(function(req,res){
+  var hero = new Superhero();
+
+    hero.loadPower(req.body.superpower);
+    hero.loadData(req.body);
+
+    hero.save(function(err, data){
+      if(err){
+        res.send(err);
+      } else {
+        res.json({ data, message: "Hero successfully added!" });
+      }
+    })
+  });
+
+//batch update
+Router.route('/multiple')
   .post(function(req,res){
     var newHeroes = [];
     //doing a bunch of things at once.. asynchronously (posting multiple at a time)
@@ -43,8 +60,7 @@ Router.route('/') // where's the URL? see server.js -> app.use('/api/superheroes
           res.json({ message: "Hero Created!", sh });
         }
   });
-
-    });
+});
 
 // U
 Router.route('/:superhero_id')

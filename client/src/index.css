@@ -1,18 +1,155 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Noto+Sans');
+:root {
+  --neutral-color: #4C5B5C; /*feldgrau */
+  --primary-color: #FF934F; /*coral */
+  --secondary-color: #FE5F55; /*sunset orange*/
+  --pop-color1: #BCED09; /*lime */
+  --pop-color2: #2F52E0; /*palatinate blue */
+  --display-font: 'Comfortaa';
+  --body-font: 'Noto Sans';
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: var(--body-font);
+  color: var(--neutral-color);
+}
+
+.contain{
+  margin-left: 5%;
+}
+
+h1 {
+    font-family: var(--display-font);
+    color: var(--primary-color);
+}
+
+.contain a{
+  text-decoration: none;
+  background-color: var(--primary-color);
+  font-weight: bolder;
+  color: white;
+  padding: 0px 4px;
+}
+.contain a:hover{
+  background-color: var(--secondary-color);
 }
 
 .nav-flex{
   display: flex;
   justify-content: space-around;
+  font-family: var(--display-font);
   list-style: none;
-  background-color: grey;
+  background-color: var(--secondary-color);
+}
+
+.nav-flex li{
+    padding: 10px 0;
+    font-size: 1.1em;
+}
+
+.nav-flex li:first-child{
+  background-color: var(--primary-color);
   color: white;
   padding: 10px 0;
+  width: 25%;
+  text-align: center;
+}
+
+.nav-flex a{
+  color: white;
+  text-decoration: none;
+}
+
+.nav-flex a:hover{
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.jumbotron img{
+  width: 100%;
+}
+
+.hero-container{
+  padding: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hero-card{
+  /*border: 1px solid lightgray;*/
+  border-top: 10px solid var(--primary-color);
+  width: calc(33.33% - 20px);
+  margin: 10px;
+  color: var(--neutral-color);
+  background-color: #F8F9F9;
 }
 
 .hero-card img{
-  max-width: 50%;
+  max-width: 100%;
+}
+
+.hero-card-content{
+  padding: 0 12px;
+}
+
+.hero-card-content h2{
+  font-family: 'Comfortaa';
+  color: var(--secondary-color);
+}
+
+.hero-card-content h4{
+  -webkit-margin-after: 0em;
+}
+
+.hero-card-content p{
+  -webkit-margin-before: 0em;
+  font-size: 0.9em;
+}
+
+/*FORM*/
+form{
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+form > * {
+  margin: 10px 0;
+}
+
+form label{
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+form input{
+  padding: 5px;
+  font-family: var(--body-font);
+}
+
+form input:focus, select:focus, textarea:focus{
+  /*outline: 1px solid var(--secondary-color);*/
+    outline:none;
+    border: 1px solid var(--secondary-color);
+    box-shadow:var(--secondary-color) 1px 1px 2px;
+}
+
+form button{
+  width: 20%;
+  padding: 5px;
+  background-color: var(--primary-color);
+  border: none;
+  color: white;
+  font-weight: bolder;
+  font-size: 1.05em;
+  font-family: var(--display-font);
+  cursor: pointer;
+}
+
+form button:hover{
+  background-color: var(--secondary-color);
+  transition: background-color 0.2s;
 }

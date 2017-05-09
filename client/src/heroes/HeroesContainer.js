@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery'
-import HeroList from './herolist'
+import HeroList from './HeroList'
 
 
 //Initialize empty state for heroes
@@ -26,7 +26,7 @@ class HeroesContainer extends Component {
 
   render() {
     return (
-      <div>
+      <div className="contain hero-container">
         { this.state.heroes ? <HeroList heroes={ this.state.heroes } /> : <p> nothing here 😞 </p> }
       </div>
     );
