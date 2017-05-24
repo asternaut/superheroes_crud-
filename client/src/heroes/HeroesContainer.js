@@ -10,7 +10,8 @@ import HeroList from './HeroList'
 //Render component to display data
 class HeroesContainer extends Component {
   state= {
-    heroes: undefined
+    heroes: undefined,
+    text: undefined,
   }
 
   componentDidMount= () => this.loadHeroes()
@@ -24,10 +25,24 @@ class HeroesContainer extends Component {
     });
   }
 
+  updateText = (event) => this.setState({text: event.target.value})
+
+  submitNote = this.submitNote.bind(this);
+
+  submitNote(event, _id){
+    event.preventDefault();
+    let note = {content: this.state.text}
+    $.ajax({
+      url: `api/superheroes/note/${_id}`,
+      method: 'POST',
+      data: note,
+    }).done((response) => this.loadHeroes )
+  }
+
   render() {
     return (
       <div className="contain hero-container">
-        { this.state.heroes ? <HeroList heroes={ this.state.heroes } /> : <p> nothing here 😞 </p> }
+        { this.state.heroes ? <HeroList heroes={ this.state.heroes } updateText={this.updateText} submitNote={ this.submitNote }/> : <p> nothing here 😞 </p> }
       </div>
     );
   }

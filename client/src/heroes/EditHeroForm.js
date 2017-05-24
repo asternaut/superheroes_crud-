@@ -11,6 +11,10 @@ const HeroForm = (props) => {
         <input type="text" value={props.superpowers} placeholder="description"/>
         <label>Image</label>
         <input type="text" value={props.img} placeholder="paste image URL here" onChange ={(event) => props.updateField('img', event.target.value)}/>
+        <label>Universe</label>
+        <input type="text" value={props.universe} placeholder="where is the dog from?" onChange ={(event) => props.updateField('universe', event.target.value)}/>
+        <label>Evil</label>
+        <input type="text" value={props.evil} placeholder="is this a bad dog?" onChange ={(event) => props.updateField('evil', event.target.value)}/>
 
         <div className="col-md-12">
          <div className="row">
@@ -20,11 +24,12 @@ const HeroForm = (props) => {
              )
            }
            </div>
-           <input type="text" placeholder="Pleasue enter hero power." onChange={(event) => props.updateField("newPower",event.target.value)}/>
+           <input type="text" placeholder="Describe the dog" onChange={(event) => props.updateField("newPower",event.target.value)}/>
          </div>
-         <div className="row">
-         <button onClick={(event) => props.updatePowers(event)} className="btn btn-default">Add Power +</button>
-         <button onClick={(event) => props.removePower(event)} className="btn btn-default">Remove Power -</button>
+
+         <div>
+         <button onClick={(event) => props.updatePowers(event)} >Add Power +</button>
+         <button onClick={(event) => props.removePower(event)} >Remove Power -</button>
          </div>
         </div>
 

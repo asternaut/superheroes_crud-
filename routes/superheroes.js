@@ -2,18 +2,18 @@
 var express = require('express');
 var Router = express.Router();
 var async = require('async');
+var Note = require('../models/note');
 var Superhero = require('../models/superhero');
 
 // C
 Router.route('/') // where's the URL? see server.js -> app.use('/api/superheroes', heroRoutes);
 .get(function(req,res){
-  Superhero.find(function(err, data){
-    if(err){
-      res.send(err);
-    }else{
-      res.json({message: "found your heros", data});
-    }
-  });
+  Superhero.find()
+    .populate('notes')
+    .exec((err, data) => {
+      if (err) throw err;
+      res.send({data})
+    })
 })
 .post(function(req,res){
   var hero = new Superhero();
@@ -30,9 +30,10 @@ Router.route('/') // where's the URL? see server.js -> app.use('/api/superheroes
     })
   });
 
-//batch update
+
 Router.route('/multiple')
   .post(function(req,res){
+    //batch update
     var newHeroes = [];
     //doing a bunch of things at once.. asynchronously (posting multiple at a time)
     async.each(req.body.data, function(hero, cb){
@@ -78,8 +79,10 @@ Router.route('/:superhero_id')
     });
   });
 }) // ommit ';' to chain together :)
-.get(function(req,res){
-  Superhero.findById(req.params.superhero_id, function(err, data){
+.get((req,res) => {
+  Superhero.findById(req.params.superhero_id)
+  .populate('notes')
+  .exec((err, data) => {
       if(err){
         res.send(err);
       } else {
@@ -96,5 +99,26 @@ Router.route('/:superhero_id')
       }
     });
 });
+
+// route just for posting notes
+// find a specific hero
+// make a note
+// add new note to hero
+Router.route('/note/:superhero_id')
+  .post((req, res) => {
+    Superhero.findById(req.params.superhero_id, (err, hero) => {
+      if(err) throw err;
+      const newNote = new Note();
+      newNote.loadData(req.body); //load data method defined eariler
+      newNote.save((err, savedNote) => {
+        if(err) throw err;
+        hero.notes.push(savedNote);
+        hero.save((err, savedHero) => {
+          if(err) throw err;
+          res.send({data: savedHero});
+        })
+      })
+    })
+  })
 
 module.exports = Router;

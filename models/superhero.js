@@ -6,7 +6,8 @@ var SuperheroSchema = new mongoose.Schema({
   superpowers: [{ type: String }],
   universe: String,
   evil: Boolean,
-  img: String
+  img: String,
+  notes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Note' }],
 });
 
 // Mongoose methods

@@ -8,7 +8,9 @@ class EditHeroContainer extends Component{
     name: undefined,
     superpowers: undefined,
     img: undefined,
-    newPower: undefined
+    newPower: undefined,
+    universe: undefined,
+    evil: undefined,
   }
 
   componentDidMount = () => this.loadHero();
@@ -30,7 +32,10 @@ class EditHeroContainer extends Component{
         name:        data.name,
         superpowers: data.superpowers,
         img:         data.img,
-        isFetching:  false })
+        universe:    data.universe,
+        evil:        data.evil,
+        isFetching:  false
+       })
     })
   }
 
@@ -40,6 +45,8 @@ class EditHeroContainer extends Component{
       name:        this.state.name,
       superpowers: this.state.superpowers,
       img:         this.state.img,
+      universe:    this.state.universe,
+      evil:        this.state.evil
     }
     $.ajax({
       url:`/api/superheroes/${this.props.params.heroId}`,
@@ -79,7 +86,10 @@ class EditHeroContainer extends Component{
           updatePowers={(event)=> this.updatePowers(event)}
           name={this.state.name}
           superpowers={this.state.superpowers}
-          img={this.state.img} /> : <h4> One moment... </h4> }
+          img={this.state.img}
+          universe={this.state.universe}
+          evil={this.state.evil}
+          /> : <h4> One moment... </h4> }
       </div>
     )
   }
