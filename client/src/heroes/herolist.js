@@ -1,4 +1,5 @@
 import React from 'react';
+import NotesList from './NotesList';
 import {Link} from 'react-router';
 
 const HeroList = (props) => {
@@ -26,6 +27,9 @@ const HeroCard = props =>
       <input type="text" placeholder="add comments here" onChange={(event) => props.updateText(event)}/>
       <button type="submit" onClick={(event) => props.submitNote(event, props._id) }> comment </button>
     </form>
+
+    <NotesList notes={props.notes}/>
+
 
   </div>
 

@@ -31,6 +31,10 @@ class HeroesContainer extends Component {
 
   submitNote(event, _id){
     event.preventDefault();
+    if(!this.state.text || this.state.text.length < 1){
+      alert( "this field is empty!" )
+      return
+    }
     let note = {content: this.state.text}
     $.ajax({
       url: `api/superheroes/note/${_id}`,

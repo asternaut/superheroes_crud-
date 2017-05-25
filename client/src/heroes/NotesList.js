@@ -1,10 +1,18 @@
 import React from 'react';
 
-const NotesList = () => {
+const NotesList = (props) => {
   return(
     <div>
-      <h2> Comments </h2>
-      <div> {props.notes} </div>
+      <h3> Comments </h3>
+      <div>
+        {props.notes.map((item, index) => (
+          <div key={index}>
+            <div> {item.content}</div>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
+
+export default NotesList
