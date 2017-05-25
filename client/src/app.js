@@ -1,7 +1,6 @@
+
 import React, { Component } from 'react';
 import NavvBar from './NavvBar';
-//require('bootstrap/dist/css/bootstrap.css');
-
 
 class App extends Component{
   render () {

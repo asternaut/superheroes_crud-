@@ -1,5 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
 import {Link} from 'react-router';
 import './index.css'
 
@@ -17,7 +16,7 @@ const NavvBar = (props) =>
   </div>
 
 export default NavvBar;
-=======
+
 import { Link } from 'react-router';
 
 const NavvBar = () =>
@@ -30,4 +29,3 @@ const NavvBar = () =>
       </ul>
     </nav>
   </div>
->>>>>>> master

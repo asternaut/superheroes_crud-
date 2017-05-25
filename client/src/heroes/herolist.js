@@ -27,6 +27,8 @@ const HeroCard = props =>
       <button type="submit" onClick={(event) => props.submitNote(event, props._id) }> comment </button>
     </form>
 
+    <p> {props.notes}</p>
+
   </div>
 
 export default HeroList;
