@@ -24,7 +24,7 @@ const HeroCard = props =>
     <Link to={`/heroes/edit/${props._id}`}>Edit</Link>
 
     <form className="post-form">
-      <input type="text" placeholder="add comments here" onChange={(event) => props.updateText(event)}/>
+      <input value={props.text} type="text" placeholder="add comment" onChange={(event) => props.updateText(event)}/>
       <button type="submit" onClick={(event) => props.submitNote(event, props._id) }> comment </button>
     </form>
 
